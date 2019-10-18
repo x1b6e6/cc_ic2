@@ -1,0 +1,5 @@
+item.prototype_heat_vent.name=Prototype Heat Vent
+item.prototype_heat_vent_2.name=Prototype 2 Heat Vent
+item.prototype_heat_exchanger.name=Prototype Heat Exchanger
+item.prototype_component_heat_vent.name=Prototype Component Heat Vent
+item.izm_condensator.name=Izumrude Condensator

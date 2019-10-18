@@ -1,0 +1,6 @@
+{
+	"parent": "cc_ic2:item/prototype",
+	"textures": {
+		"layer0": "cc_ic2:items/prototype_heat_vent_2"
+	}
+}

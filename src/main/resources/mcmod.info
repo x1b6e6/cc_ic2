@@ -1,0 +1,16 @@
+[
+{
+  "modid": "cc_ic2",
+  "name": "ComputerCraft with IndustrialCraft2",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["x1b6e6"],
+  "credits": "The Forge and FML guys, for making FML",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
