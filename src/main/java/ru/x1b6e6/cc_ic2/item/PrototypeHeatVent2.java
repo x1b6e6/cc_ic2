@@ -6,11 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class PrototypeHeatVent2 extends Prototype {
-	public static final int FROM_CORE = 128;
-	public static final int HEAT_DOWN = 64;
+	public static final int FROM_CORE = 144;
+	public static final int HEAT_DOWN = 80;
 
 	public PrototypeHeatVent2() {
-		super("prototype_heat_vent_2", 20000);
+		super("prototype_heat_vent_2", 9000);
 	}
 
 	@Override

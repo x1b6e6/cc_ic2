@@ -35,9 +35,8 @@ public class IC2Mod {
 		items = new Item[] {
 				// clang-format off
 
-				new PrototypeHeatVent(),
-				new PrototypeHeatVent2(),
-				new PrototypeHeatExchanger()
+				new PrototypeHeatVent(), new PrototypeHeatVent2()
+				// new PrototypeHeatExchanger()
 
 				// clang-format on
 		};
@@ -53,44 +52,29 @@ public class IC2Mod {
 				// clang-format off
 
 				// base
-				InvertoryImpl.class,
-				HeatSourceImpl.class,
+				InvertoryImpl.class, HeatSourceImpl.class,
 
 				// generator
-				BaseGeneratorImpl.class,
-				ConversionGeneratorImpl.class,
-				GeneratorImpl.class,
-				GeoGeneratorImpl.class,
+				BaseGeneratorImpl.class, ConversionGeneratorImpl.class, GeneratorImpl.class, GeoGeneratorImpl.class,
 				KineticGeneratorImpl.class,
 
 				// heatgenerator
-				ElectricHeatGeneratorImpl.class,
-				FluidHeatGeneratorImpl.class,
-				RTHeatGeneratorImpl.class,
+				ElectricHeatGeneratorImpl.class, FluidHeatGeneratorImpl.class, RTHeatGeneratorImpl.class,
 				SolidHeatGeneratorImpl.class,
 
 				// kineticgenerator
-				ElectricKineticGeneratorImpl.class,
-				SteamKineticGeneratorImpl.class,
-				StirlingKineticGeneratorImpl.class,
-				WaterKineticGeneratorImpl.class,
-				WindKineticGeneratorImpl.class,
+				ElectricKineticGeneratorImpl.class, SteamKineticGeneratorImpl.class, StirlingKineticGeneratorImpl.class,
+				WaterKineticGeneratorImpl.class, WindKineticGeneratorImpl.class,
 
 				// machine
-				AssemblyBenchImpl.class,
-				BatchCrafterImpl.class,
-				ElectricMachineImpl.class,
-				LiquidHeatExchangerImpl.class,
-				StandardMachineImpl.class,
+				AssemblyBenchImpl.class, BatchCrafterImpl.class, ElectricMachineImpl.class,
+				LiquidHeatExchangerImpl.class, StandardMachineImpl.class,
 
 				// reactor
-				ReactorImpl.class,
-				ReactorVesselImpl.class,
-				ReactorChamberImpl.class,
+				ReactorImpl.class, ReactorVesselImpl.class, ReactorChamberImpl.class,
 
 				// storage
-				TankImpl.class,
-				StorageBoxImpl.class,
+				TankImpl.class, StorageBoxImpl.class,
 
 				// wiring
 				ElectricBlockImpl.class
@@ -99,14 +83,15 @@ public class IC2Mod {
 		}));
 	}
 
-	public static void log_info(String msg){
+	public static void log_info(String msg) {
 		log.info(msg);
 	}
 
-	public static void log_warn(String msg){
+	public static void log_warn(String msg) {
 		log.warn(msg);
 	}
-	public static void log_error(String msg){
+
+	public static void log_error(String msg) {
 		log.error(msg);
 	}
 }
