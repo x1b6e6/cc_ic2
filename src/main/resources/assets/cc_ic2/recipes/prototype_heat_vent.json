@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " o ",
+        "oxo",
+        " o "
+    ],
+    "key": {
+        "o": {
+            "item": "ic2:overclocked_heat_vent"
+        },
+        "x": {
+            "item": "ic2:component_heat_exchanger"
+        }
+    },
+    "result": {
+        "item": "cc_ic2:prototype_heat_vent"
+    }
+}
