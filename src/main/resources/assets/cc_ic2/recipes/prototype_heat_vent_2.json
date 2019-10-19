@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "cc_ic2:prototype_heat_vent"
+        },
+        {
+            "item": "ic2:crafting",
+            "data": 2
+        }
+    ],
+    "result": {
+        "item": "cc_ic2:prototype_heat_vent_2"
+    }
+}
