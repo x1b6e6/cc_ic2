@@ -2,6 +2,8 @@ package ru.x1b6e6.cc_ic2.util;
 
 import java.lang.reflect.Field;
 
+import javax.annotation.Nonnull;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fluids.FluidTank;
@@ -63,11 +65,12 @@ public class Utils {
 	 * @brief find declared field (recurse)
 	 *
 	 * @param cl is a class, where find
+	 * 
 	 * @param name is name of target field
 	 *
 	 * @return founded field
 	 */
-	public static Field getDeclaredField(Class<?> cl, String name) throws NoSuchFieldException {
+	public static Field getDeclaredField(@Nonnull Class<?> cl, @Nonnull String name) {
 		try {
 			Field f = cl.getDeclaredField(name);
 			return f;
@@ -81,17 +84,19 @@ public class Utils {
 	 * @brief getting private/protected object by name
 	 *
 	 * @param obj is target object, where find
+	 * 
 	 * @param varName is name of target field
 	 *
 	 * @return founded object
 	 */
-	public static Object getObject(Object obj, String varName) throws NoSuchFieldException, IllegalAccessException {
+	public static Object getObject(@Nonnull Object obj, @Nonnull String varName)
+			throws NoSuchFieldException, IllegalAccessException {
 		try {
 			Field f = getDeclaredField(obj.getClass(), varName);
 			f.setAccessible(true);
 			return f.get(obj);
 		} catch (Exception e) {
-			IC2Mod.log_error(e.getMessage() + e.getStackTrace());
+			IC2Mod.log_error(e.getMessage(), e.getStackTrace().toString());
 			throw e;
 		}
 	}

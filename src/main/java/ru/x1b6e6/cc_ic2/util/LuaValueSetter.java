@@ -1,7 +1,6 @@
 package ru.x1b6e6.cc_ic2.util;
 
 import java.lang.reflect.Field;
-
 import javax.annotation.Nullable;
 
 import dan200.computercraft.api.lua.ILuaTask;
@@ -29,9 +28,8 @@ public class LuaValueSetter implements ILuaTask {
 		try {
 			field.set(instance, value);
 		} catch (IllegalAccessException e) {
-			throw new LuaException("Failed to set value of " + field.getName() +
-								   " for entity of type " +
-								   instance.getClass().getName());
+			throw new LuaException("Failed to set value of " + field.getName() + " for entity of type "
+					+ instance.getClass().getName());
 		}
 		return null;
 	}

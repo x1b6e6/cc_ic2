@@ -1,14 +1,11 @@
 package ru.x1b6e6.cc_ic2.item;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import ic2.api.item.ICustomDamageItem;
 import ic2.api.reactor.IReactor;
@@ -25,9 +22,6 @@ public abstract class Prototype extends Item implements IReactorComponent, ICust
 		setRegistryName(NAME);
 		setCreativeTab(IC2.tabIC2);
 		setNoRepair();
-		ForgeRegistries.ITEMS.register(this);
-		ModelLoader.setCustomModelResourceLocation(this, 0,
-				new ModelResourceLocation(this.getRegistryName(), "invertory"));
 	}
 
 	@Override

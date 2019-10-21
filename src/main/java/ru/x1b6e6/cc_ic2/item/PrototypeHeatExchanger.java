@@ -11,9 +11,11 @@ public class PrototypeHeatExchanger extends Prototype {
 	public static final int HEAT_DOWN = 0;
 	public static final int EXCHANGE = 64;
 
-	public PrototypeHeatExchanger() { super(NAME, MAX_HEAT); }
+	public PrototypeHeatExchanger() {
+		super(NAME, MAX_HEAT);
+	}
 
 	@Override
-	public void processChamber(ItemStack stack, IReactor reactor, int x, int y,
-							   boolean heatrun) {}
+	public void processChamber(ItemStack stack, IReactor reactor, int x, int y, boolean heatrun) {
+	}
 }
