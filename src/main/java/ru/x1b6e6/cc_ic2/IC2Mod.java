@@ -42,16 +42,15 @@ import ru.x1b6e6.cc_ic2.impl.wiring.ElectricBlockImpl;
 import ru.x1b6e6.cc_ic2.item.PrototypeHeatVent;
 import ru.x1b6e6.cc_ic2.item.PrototypeHeatVent2;
 
-@Mod(name = IC2Mod.NAME, version = IC2Mod.VERSION, modid = IC2Mod.MODID, dependencies = "required-after:computercraft")
+@Mod(name = IC2Mod.NAME, version = IC2Mod.VERSION, modid = IC2Mod.MODID, dependencies = "required-after:computercraft;required-after:ic2")
 public class IC2Mod {
 	public static final String MODID = "cc_ic2";
-	public static final String NAME = "CC with IC2";
+	public static final String NAME = "ComputerCraft with IndustrialCraft2";
 	public static final String VERSION = "1.0";
 
 	private static Logger log = LogManager.getLogger(MODID);
 	Item[] items;
 
-	public static final Class<?>[] items_classes = new Class<?>[] { PrototypeHeatVent.class, PrototypeHeatVent2.class };
 	public static final Class<?>[] impls_classes = new Class<?>[] {
 			// clang-format off
 
@@ -85,6 +84,7 @@ public class IC2Mod {
 
 			// clang-format on
 	};
+	public static final Class<?>[] items_classes = new Class<?>[] { PrototypeHeatVent.class, PrototypeHeatVent2.class };
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
