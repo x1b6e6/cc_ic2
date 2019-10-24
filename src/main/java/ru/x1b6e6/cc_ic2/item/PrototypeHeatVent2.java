@@ -1,9 +1,13 @@
 package ru.x1b6e6.cc_ic2.item;
 
+import java.util.List;
+
 import ic2.api.reactor.IReactor;
 import ic2.core.util.StackUtil;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 
 public class PrototypeHeatVent2 extends Prototype {
 	public static final int FROM_CORE = 144;
@@ -74,5 +78,11 @@ public class PrototypeHeatVent2 extends Prototype {
 		}
 
 		return 0.5D;
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flag) {
+		super.addInformation(stack, worldIn, tooltip, flag);
+		tooltip.add("State: " + Double.toString(getState(stack)));
 	}
 }

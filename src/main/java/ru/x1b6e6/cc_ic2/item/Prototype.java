@@ -1,17 +1,20 @@
 package ru.x1b6e6.cc_ic2.item;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.NonNullList;
+import java.util.List;
 
 import ic2.api.item.ICustomDamageItem;
 import ic2.api.reactor.IReactor;
 import ic2.api.reactor.IReactorComponent;
 import ic2.core.IC2;
 import ic2.core.util.StackUtil;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
 
 public abstract class Prototype extends Item implements IReactorComponent, ICustomDamageItem {
 	public final int MAX_HEAT;
@@ -143,5 +146,11 @@ public abstract class Prototype extends Item implements IReactorComponent, ICust
 		ItemStack stack = new ItemStack(this);
 		setCustomDamage(stack, 0);
 		subItems.add(stack);
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		int durability = getMaxDamage(stack) - getDamage(stack);
+		tooltip.add("Durability: " + Integer.toString(durability) + "/" + Integer.toString(getMaxDamage(stack)));
 	}
 }
