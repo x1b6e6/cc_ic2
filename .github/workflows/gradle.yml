@@ -19,5 +19,5 @@ jobs:
       run: ./gradlew build
     - uses: actions/upload-artifact@v1.0.0
       with:
-        name: cc_ic2.jar
+        name: cc_ic2
         path: build/libs/cc_ic2-1.0.jar
