@@ -2,10 +2,8 @@ buildscript {
     repositories {
         jcenter()
         maven { url = "https://files.minecraftforge.net/maven" }
-        maven { url = "https://squiddev.cc/maven/" }
     }
     dependencies {
-       // implementation 'org.squiddev:cc-tweaked-1.12.2:1.85.0'
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
@@ -56,7 +54,6 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-//    implementation 'org.squiddev:cc-tweaked-1.12.2:1.85.0'
 }
 
 processResources {

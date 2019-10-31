@@ -28,8 +28,9 @@ public class LuaValueSetter implements ILuaTask {
 		try {
 			field.set(instance, value);
 		} catch (IllegalAccessException e) {
-			throw new LuaException("Failed to set value of " + field.getName() + " for entity of type "
-					+ instance.getClass().getName());
+			throw new LuaException("Failed to set value of " + field.getName() +
+								   " for entity of type " +
+								   instance.getClass().getName());
 		}
 		return null;
 	}

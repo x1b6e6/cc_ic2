@@ -12,8 +12,9 @@ import ru.x1b6e6.cc_ic2.util.Utils;
 @TileEntityBind(name = "generator", tileentity = TileEntityGenerator.class)
 public class GeneratorImpl extends BaseGeneratorImpl {
 	@PeripheralFunc
-	public static Object[] getFuelRatio(TileEntityGenerator te, IComputerAccess computer, ILuaContext context,
-			Object[] args) {
+	public static Object[] getFuelRatio(TileEntityGenerator te,
+										IComputerAccess computer,
+										ILuaContext context, Object[] args) {
 		return Utils.toArray(te.getFuelRatio());
 	}
 }

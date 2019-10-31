@@ -13,30 +13,34 @@ public class PrototypeHeatVent2 extends Prototype {
 	public static final int FROM_CORE = 144;
 	public static final int HEAT_DOWN = 80;
 
-	public PrototypeHeatVent2() {
-		super("prototype_heat_vent_2", 9000);
-	}
+	public PrototypeHeatVent2() { super("prototype_heat_vent_2", 9000); }
 
 	@Override
-	public void processChamber(ItemStack stack, IReactor reactor, int x, int y, boolean heatrun) {
+	public void processChamber(ItemStack stack, IReactor reactor, int x, int y,
+							   boolean heatrun) {
 		if (heatrun) {
 			int rheat = reactor.getHeat();
-			int from_core = (int) (FROM_CORE * getState(stack));
+			int from_core = (int)(FROM_CORE * getState(stack));
 			int reactorDrain = rheat;
-			if (reactorDrain > from_core)
+			if (reactorDrain > from_core) {
 				reactorDrain = from_core;
+			}
 			rheat -= reactorDrain;
-			if ((reactorDrain = alterHeat(stack, reactor, x, y, reactorDrain)) > 0)
+			if ((reactorDrain = alterHeat(stack, reactor, x, y, reactorDrain)) >
+				0) {
 				return;
+			}
 			reactor.setHeat(rheat);
 			int self = alterHeat(stack, reactor, x, y, -HEAT_DOWN);
-			if (self <= 0)
+			if (self <= 0) {
 				reactor.addEmitHeat(self + HEAT_DOWN);
+			}
 		}
 	}
 
 	@Override
-	public int alterHeat(ItemStack stack, IReactor reactor, int x, int y, int heat) {
+	public int alterHeat(ItemStack stack, IReactor reactor, int x, int y,
+						 int heat) {
 		if (!reactor.isFluidCooled())
 			return heat;
 		int myHeat = getCurrentHeat(stack, reactor, x, y);
@@ -81,7 +85,8 @@ public class PrototypeHeatVent2 extends Prototype {
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation(ItemStack stack, World worldIn,
+							   List<String> tooltip, ITooltipFlag flag) {
 		super.addInformation(stack, worldIn, tooltip, flag);
 		tooltip.add("State: " + Double.toString(getState(stack)));
 	}

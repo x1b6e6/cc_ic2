@@ -9,11 +9,13 @@ import ru.x1b6e6.cc_ic2.annotation.TileEntityBind;
 import ru.x1b6e6.cc_ic2.impl.HeatSourceImpl;
 import ru.x1b6e6.cc_ic2.util.Utils;
 
-@TileEntityBind(name = "electric_heat_generator", tileentity = TileEntityElectricHeatGenerator.class)
+@TileEntityBind(name = "electric_heat_generator",
+				tileentity = TileEntityElectricHeatGenerator.class)
 public class ElectricHeatGeneratorImpl extends HeatSourceImpl {
 	@PeripheralFunc
-	public static Object[] getChargeLevel(TileEntityElectricHeatGenerator te, IComputerAccess computer,
-			ILuaContext context, Object[] args) {
+	public static Object[] getChargeLevel(TileEntityElectricHeatGenerator te,
+										  IComputerAccess computer,
+										  ILuaContext context, Object[] args) {
 		return Utils.toArray(te.getChargeLevel());
 	}
 }

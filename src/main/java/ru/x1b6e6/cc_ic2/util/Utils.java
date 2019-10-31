@@ -19,9 +19,11 @@ public class Utils {
 	 */
 	public static Object[] getFluidInfo(FluidTank fluidTank) {
 		if (fluidTank == null || fluidTank.getFluidAmount() == 0) {
-			return toArray("empty", 0, fluidTank == null ? 0 : fluidTank.getCapacity());
+			return toArray("empty", 0,
+						   fluidTank == null ? 0 : fluidTank.getCapacity());
 		}
-		return toArray(fluidTank.getFluid().getUnlocalizedName(), fluidTank.getFluidAmount(), fluidTank.getCapacity());
+		return toArray(fluidTank.getFluid().getUnlocalizedName(),
+					   fluidTank.getFluidAmount(), fluidTank.getCapacity());
 	}
 
 	/*
@@ -32,11 +34,13 @@ public class Utils {
 	 * @return {item name, item counts, item health, item max health}
 	 */
 	public static Object[] getItemInfo(ItemStack itemStack) {
-		if (itemStack == null || itemStack.getUnlocalizedName().equals("tile.air")) {
+		if (itemStack == null ||
+			itemStack.getUnlocalizedName().equals("tile.air")) {
 			return toArray("empty", 0, 0, 0);
 		}
 		return toArray(itemStack.getUnlocalizedName(), itemStack.getCount(),
-				itemStack.getMaxDamage() - itemStack.getItemDamage(), itemStack.getMaxDamage());
+					   itemStack.getMaxDamage() - itemStack.getItemDamage(),
+					   itemStack.getMaxDamage());
 	}
 
 	/*
@@ -57,20 +61,19 @@ public class Utils {
 	 *
 	 * @return array of args
 	 */
-	public static Object[] toArray(Object... t) {
-		return t;
-	}
+	public static Object[] toArray(Object... t) { return t; }
 
 	/*
 	 * @brief find declared field (recurse)
 	 *
 	 * @param cl is a class, where find
-	 * 
+	 *
 	 * @param name is name of target field
 	 *
 	 * @return founded field
 	 */
-	public static Field getDeclaredField(@Nonnull Class<?> cl, @Nonnull String name) {
+	public static Field getDeclaredField(@Nonnull Class<?> cl,
+										 @Nonnull String name) {
 		try {
 			Field f = cl.getDeclaredField(name);
 			return f;
@@ -84,13 +87,13 @@ public class Utils {
 	 * @brief getting private/protected object by name
 	 *
 	 * @param obj is target object, where find
-	 * 
+	 *
 	 * @param varName is name of target field
 	 *
 	 * @return founded object
 	 */
 	public static Object getObject(@Nonnull Object obj, @Nonnull String varName)
-			throws NoSuchFieldException, IllegalAccessException {
+		throws NoSuchFieldException, IllegalAccessException {
 		try {
 			Field f = getDeclaredField(obj.getClass(), varName);
 			f.setAccessible(true);

@@ -42,7 +42,8 @@ import ru.x1b6e6.cc_ic2.impl.wiring.ElectricBlockImpl;
 import ru.x1b6e6.cc_ic2.item.PrototypeHeatVent;
 import ru.x1b6e6.cc_ic2.item.PrototypeHeatVent2;
 
-@Mod(name = IC2Mod.NAME, version = IC2Mod.VERSION, modid = IC2Mod.MODID, dependencies = "required-after:computercraft;required-after:ic2")
+@Mod(name = IC2Mod.NAME, version = IC2Mod.VERSION, modid = IC2Mod.MODID,
+	 dependencies = "required-after:computercraft;required-after:ic2")
 public class IC2Mod {
 	public static final String MODID = "cc_ic2";
 	public static final String NAME = "ComputerCraft with IndustrialCraft2";
@@ -52,39 +53,55 @@ public class IC2Mod {
 	Item[] items;
 
 	public static final Class<?>[] impls_classes = new Class<?>[] {
-			// clang-format off
+		// clang-format off
 
 			// base
-			InvertoryImpl.class, HeatSourceImpl.class,
+			InvertoryImpl.class,
+			HeatSourceImpl.class,
 
 			// generator
-			BaseGeneratorImpl.class, ConversionGeneratorImpl.class, GeneratorImpl.class, GeoGeneratorImpl.class,
+			BaseGeneratorImpl.class,
+			ConversionGeneratorImpl.class,
+			GeneratorImpl.class,
+			GeoGeneratorImpl.class,
 			KineticGeneratorImpl.class,
 
 			// heatgenerator
-			ElectricHeatGeneratorImpl.class, FluidHeatGeneratorImpl.class, RTHeatGeneratorImpl.class,
+			ElectricHeatGeneratorImpl.class,
+			FluidHeatGeneratorImpl.class,
+			RTHeatGeneratorImpl.class,
 			SolidHeatGeneratorImpl.class,
 
 			// kineticgenerator
-			ElectricKineticGeneratorImpl.class, SteamKineticGeneratorImpl.class, StirlingKineticGeneratorImpl.class,
-			WaterKineticGeneratorImpl.class, WindKineticGeneratorImpl.class,
+			ElectricKineticGeneratorImpl.class,
+			SteamKineticGeneratorImpl.class,
+			StirlingKineticGeneratorImpl.class,
+			WaterKineticGeneratorImpl.class,
+			WindKineticGeneratorImpl.class,
 
 			// machine
-			AssemblyBenchImpl.class, BatchCrafterImpl.class, ElectricMachineImpl.class, LiquidHeatExchangerImpl.class,
+			AssemblyBenchImpl.class,
+			BatchCrafterImpl.class,
+			ElectricMachineImpl.class,
+			LiquidHeatExchangerImpl.class,
 			StandardMachineImpl.class,
 
 			// reactor
-			ReactorImpl.class, ReactorVesselImpl.class, ReactorChamberImpl.class,
+			ReactorImpl.class,
+			ReactorVesselImpl.class,
+			ReactorChamberImpl.class,
 
 			// storage
-			TankImpl.class, StorageBoxImpl.class,
+			TankImpl.class,
+			StorageBoxImpl.class,
 
 			// wiring
 			ElectricBlockImpl.class
 
-			// clang-format on
+		// clang-format on
 	};
-	public static final Class<?>[] items_classes = new Class<?>[] { PrototypeHeatVent.class, PrototypeHeatVent2.class };
+	public static final Class<?>[] items_classes =
+		new Class<?>[] {PrototypeHeatVent.class, PrototypeHeatVent2.class};
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -96,17 +113,22 @@ public class IC2Mod {
 				Item item = Item.class.cast(obj);
 
 				ForgeRegistries.ITEMS.register(item);
-				ModelLoader.setCustomModelResourceLocation(item, 0,
-						new ModelResourceLocation(item.getRegistryName(), "invertory"));
+				ModelLoader.setCustomModelResourceLocation(
+					item, 0,
+					new ModelResourceLocation(item.getRegistryName(),
+											  "invertory"));
 			} catch (Exception e) {
 				String error_msg = "";
 				if (IllegalAccessException.class.isInstance(e)) {
-					error_msg += IllegalAccessException.class.cast(e).getMessage();
+					error_msg +=
+						IllegalAccessException.class.cast(e).getMessage();
 				}
 				if (InstantiationException.class.isInstance(e)) {
-					error_msg += InstantiationException.class.cast(e).getMessage();
+					error_msg +=
+						InstantiationException.class.cast(e).getMessage();
 				}
-				log.error("cant register item (", item_cls.getName(), "): ", error_msg);
+				log.error("cant register item (", item_cls.getName(),
+						  "): ", error_msg);
 			}
 		}
 	}
@@ -114,18 +136,13 @@ public class IC2Mod {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		log.info("register peripherals");
-		ComputerCraftAPI.registerPeripheralProvider(new PeripheralProvider(impls_classes));
+		ComputerCraftAPI.registerPeripheralProvider(
+			new PeripheralProvider(impls_classes));
 	}
 
-	public static void log_info(String... msg) {
-		log.info(msg);
-	}
+	public static void log_info(String... msg) { log.info(msg); }
 
-	public static void log_warn(String... msg) {
-		log.warn(msg);
-	}
+	public static void log_warn(String... msg) { log.warn(msg); }
 
-	public static void log_error(String... msg) {
-		log.error(msg);
-	}
+	public static void log_error(String... msg) { log.error(msg); }
 }

@@ -14,12 +14,13 @@ import ru.x1b6e6.cc_ic2.util.Utils;
 @TileEntityBind(name = "tank", tileentity = TileEntityTank.class)
 public class TankImpl extends InvertoryImpl {
 	@PeripheralFunc
-	public static Object[] getFluidTank(TileEntityTank te, IComputerAccess computer, ILuaContext context,
-			Object[] args) {
+	public static Object[] getFluidTank(TileEntityTank te,
+										IComputerAccess computer,
+										ILuaContext context, Object[] args) {
 		try {
-			Fluids fs = (Fluids) Utils.getObject(te, "fluidsComponent");
+			Fluids fs = (Fluids)Utils.getObject(te, "fluidsComponent");
 			Iterable<? extends FluidTank> ift = fs.getAllTanks();
-			return Utils.getFluidInfo((FluidTank) ift.iterator().next());
+			return Utils.getFluidInfo((FluidTank)ift.iterator().next());
 		} catch (Exception e) {
 		}
 		return null;

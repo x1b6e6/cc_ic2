@@ -5,6 +5,6 @@ import ic2.core.block.heatgenerator.tileentity.TileEntityRTHeatGenerator;
 import ru.x1b6e6.cc_ic2.annotation.TileEntityBind;
 import ru.x1b6e6.cc_ic2.impl.HeatSourceImpl;
 
-@TileEntityBind(name = "rt_heat_generator", tileentity = TileEntityRTHeatGenerator.class)
-public class RTHeatGeneratorImpl extends HeatSourceImpl {
-}
+@TileEntityBind(name = "rt_heat_generator",
+				tileentity = TileEntityRTHeatGenerator.class)
+public class RTHeatGeneratorImpl extends HeatSourceImpl {}

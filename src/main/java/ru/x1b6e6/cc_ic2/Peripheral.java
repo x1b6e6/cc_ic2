@@ -28,9 +28,11 @@ public class Peripheral implements IPeripheral {
 		this.te = te;
 
 		Class<?> top = impls[0];
-		for (int j = 1; j < impls.length; j++)
-			if (top.isAssignableFrom(impls[j]))
+		for (int j = 1; j < impls.length; j++) {
+			if (top.isAssignableFrom(impls[j])) {
 				top = impls[j];
+			}
+		}
 
 		TileEntityBind ann = top.getAnnotation(TileEntityBind.class);
 		this.peripheral_name = ann.name();
@@ -51,7 +53,8 @@ public class Peripheral implements IPeripheral {
 			}
 		}
 		methods = methods_arr.toArray(new Method[methods_arr.size()]);
-		method_names = method_names_arr.toArray(new String[method_names_arr.size()]);
+		method_names =
+			method_names_arr.toArray(new String[method_names_arr.size()]);
 	}
 
 	@Nonnull
@@ -68,29 +71,38 @@ public class Peripheral implements IPeripheral {
 
 	@Override
 	@Nullable
-	public Object[] callMethod(@Nonnull IComputerAccess computer, @Nonnull ILuaContext context, int method_id,
-			@Nonnull Object[] args) throws LuaException, InterruptedException {
+	public Object[] callMethod(@Nonnull IComputerAccess computer,
+							   @Nonnull ILuaContext context, int method_id,
+							   @Nonnull Object[] args)
+		throws LuaException, InterruptedException {
 		try {
-			return (Object[]) this.methods[method_id].invoke(null, te_class.cast(te), computer, context, args);
+			return (Object[])this.methods[method_id].invoke(
+				null, te_class.cast(te), computer, context, args);
 		} catch (IllegalAccessException err) {
-			IC2Mod.log_error("call method " + te_class.getName() + "." + method_names[method_id] + "(" + method_id
-					+ ") not work: " + err.getMessage() + err.getStackTrace());
+			IC2Mod.log_error("call method " + te_class.getName() + "." +
+							 method_names[method_id] + "(" + method_id +
+							 ") not work: " + err.getMessage() +
+							 err.getStackTrace());
 
 		} catch (InvocationTargetException err) {
-			IC2Mod.log_error("call method " + te_class.getName() + "." + method_names[method_id] + "(" + method_id
-					+ ") not work: " + err.getMessage() + err.getStackTrace());
+			IC2Mod.log_error("call method " + te_class.getName() + "." +
+							 method_names[method_id] + "(" + method_id +
+							 ") not work: " + err.getMessage() +
+							 err.getStackTrace());
 		}
 		return null;
 	}
 
 	@Override
 	public boolean equals(@Nullable IPeripheral other) {
-		if (other == null)
+		if (other == null) {
 			return false;
-		if (!(other instanceof Peripheral))
+		}
+		if (!(other instanceof Peripheral)) {
 			return false;
+		}
 
-		Peripheral otherImpl = (Peripheral) other;
+		Peripheral otherImpl = (Peripheral)other;
 
 		return this.te.equals(otherImpl.te);
 	}

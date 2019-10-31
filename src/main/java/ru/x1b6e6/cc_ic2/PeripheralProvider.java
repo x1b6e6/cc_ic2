@@ -16,25 +16,27 @@ import ru.x1b6e6.cc_ic2.annotation.TileEntityBind;
 public class PeripheralProvider implements IPeripheralProvider {
 	private Class<?>[] all_impls;
 
-	public PeripheralProvider(Class<?>[] impls) {
-		this.all_impls = impls;
-
-	}
+	public PeripheralProvider(Class<?>[] impls) { this.all_impls = impls; }
 
 	@Nullable
 	@Override
-	public IPeripheral getPeripheral(@Nonnull World world, @Nonnull BlockPos blockPos, @Nonnull EnumFacing enumFacing) {
+	public IPeripheral getPeripheral(@Nonnull World world,
+									 @Nonnull BlockPos blockPos,
+									 @Nonnull EnumFacing enumFacing) {
 		TileEntity te = world.getTileEntity(blockPos);
 		if (te != null) {
 			ArrayList<Class<?>> support_impls = new ArrayList<>();
 			for (Class<?> impl : all_impls) {
-				Class<? extends TileEntity> cl = impl.getAnnotation(TileEntityBind.class).tileentity();
+				Class<? extends TileEntity> cl =
+					impl.getAnnotation(TileEntityBind.class).tileentity();
 				if (cl.isInstance(te)) {
 					support_impls.add(impl);
 				}
 			}
 			if (support_impls.size() > 0)
-				return new Peripheral(te, support_impls.toArray(new Class<?>[support_impls.size()]));
+				return new Peripheral(
+					te, support_impls.toArray(
+							new Class<?>[ support_impls.size() ]));
 		}
 		return null;
 	}

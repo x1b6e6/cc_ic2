@@ -21,3 +21,5 @@ jobs:
       with:
         name: cc_ic2
         path: build/libs/cc_ic2-1.0.jar
+
+# vim: set ts=2 sw=2 autoindent ff=unix :

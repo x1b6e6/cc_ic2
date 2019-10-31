@@ -16,7 +16,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
-public abstract class Prototype extends Item implements IReactorComponent, ICustomDamageItem {
+public abstract class Prototype
+	extends Item implements IReactorComponent, ICustomDamageItem {
 	public final int MAX_HEAT;
 
 	public Prototype(String NAME, int m) {
@@ -28,8 +29,10 @@ public abstract class Prototype extends Item implements IReactorComponent, ICust
 	}
 
 	@Override
-	public boolean acceptUraniumPulse(ItemStack stack, IReactor reactor, ItemStack pulsingStack, int youX, int youY,
-			int pulseX, int pulseY, boolean heatrun) {
+	public boolean acceptUraniumPulse(ItemStack stack, IReactor reactor,
+									  ItemStack pulsingStack, int youX,
+									  int youY, int pulseX, int pulseY,
+									  boolean heatrun) {
 		return false;
 	}
 
@@ -39,9 +42,11 @@ public abstract class Prototype extends Item implements IReactorComponent, ICust
 	}
 
 	@Override
-	public int alterHeat(ItemStack stack, IReactor reactor, int x, int y, int heat) {
-		if (!reactor.isFluidCooled())
+	public int alterHeat(ItemStack stack, IReactor reactor, int x, int y,
+						 int heat) {
+		if (!reactor.isFluidCooled()) {
 			return heat;
+		}
 		int myHeat = getCurrentHeat(stack, reactor, x, y);
 		myHeat += heat;
 
@@ -80,7 +85,8 @@ public abstract class Prototype extends Item implements IReactorComponent, ICust
 	}
 
 	@Override
-	public boolean canStoreHeat(ItemStack stack, IReactor reactor, int x, int y) {
+	public boolean canStoreHeat(ItemStack stack, IReactor reactor, int x,
+								int y) {
 		return true;
 	}
 
@@ -107,8 +113,9 @@ public abstract class Prototype extends Item implements IReactorComponent, ICust
 
 	@Override
 	public int getCustomDamage(ItemStack stack) {
-		if (stack.hasTagCompound())
+		if (stack.hasTagCompound()) {
 			return stack.getTagCompound().getInteger("advDmg");
+		}
 		return 0;
 	}
 
@@ -118,14 +125,16 @@ public abstract class Prototype extends Item implements IReactorComponent, ICust
 	}
 
 	@Override
-	public boolean applyCustomDamage(ItemStack stack, int damage, EntityLivingBase src) {
+	public boolean applyCustomDamage(ItemStack stack, int damage,
+									 EntityLivingBase src) {
 		setCustomDamage(stack, getCustomDamage(stack) + damage);
 		return true;
 	}
 
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack) {
-		return (double) getCustomDamage(stack) / (double) getMaxCustomDamage(stack);
+		return (double)getCustomDamage(stack) /
+			(double)getMaxCustomDamage(stack);
 	}
 
 	@Override
@@ -149,8 +158,10 @@ public abstract class Prototype extends Item implements IReactorComponent, ICust
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+	public void addInformation(ItemStack stack, World worldIn,
+							   List<String> tooltip, ITooltipFlag flagIn) {
 		int durability = getMaxDamage(stack) - getDamage(stack);
-		tooltip.add("Durability: " + Integer.toString(durability) + "/" + Integer.toString(getMaxDamage(stack)));
+		tooltip.add("Durability: " + Integer.toString(durability) + "/" +
+					Integer.toString(getMaxDamage(stack)));
 	}
 }
