@@ -32,6 +32,7 @@ import ru.x1b6e6.cc_ic2.impl.machine.AssemblyBenchImpl;
 import ru.x1b6e6.cc_ic2.impl.machine.BatchCrafterImpl;
 import ru.x1b6e6.cc_ic2.impl.machine.ElectricMachineImpl;
 import ru.x1b6e6.cc_ic2.impl.machine.LiquidHeatExchangerImpl;
+import ru.x1b6e6.cc_ic2.impl.machine.MatterImpl;
 import ru.x1b6e6.cc_ic2.impl.machine.StandardMachineImpl;
 import ru.x1b6e6.cc_ic2.impl.reactor.ReactorChamberImpl;
 import ru.x1b6e6.cc_ic2.impl.reactor.ReactorImpl;
@@ -84,6 +85,7 @@ public class IC2Mod {
 			BatchCrafterImpl.class,
 			ElectricMachineImpl.class,
 			LiquidHeatExchangerImpl.class,
+			MatterImpl.class,
 			StandardMachineImpl.class,
 
 			// reactor

@@ -1,5 +1,6 @@
 package ru.x1b6e6.cc_ic2.item;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import ic2.api.item.ICustomDamageItem;
@@ -22,7 +23,7 @@ public abstract class Prototype
 
 	public Prototype(String NAME, int m) {
 		MAX_HEAT = m;
-		setUnlocalizedName(NAME);
+		setTranslationKey(NAME);
 		setRegistryName(NAME);
 		setCreativeTab(IC2.tabIC2);
 		setNoRepair();
@@ -163,5 +164,20 @@ public abstract class Prototype
 		int durability = getMaxDamage(stack) - getDamage(stack);
 		tooltip.add("Durability: " + Integer.toString(durability) + "/" +
 					Integer.toString(getMaxDamage(stack)));
+	}
+
+	// Wtf? This function is not found?
+	public void setTranslationKey(String key){
+		try{
+			Method m = super.getClass().getMethod("setUnlocalizedName", String.class);
+			m.invoke(this, key);
+		} catch(Exception e) {
+			try{
+				Method m = super.getClass().getMethod("setTranslationKey", String.class);
+				m.invoke(this, key);
+			} catch(Exception e1) {
+				// TODO: print error to log 
+			}
+		}
 	}
 }
