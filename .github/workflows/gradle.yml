@@ -9,6 +9,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Cache Gradle binaries and Build files
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.gradle
+          build
+        key: ${{ runner.os }}-wrapper-and-build
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
@@ -20,6 +27,7 @@ jobs:
     - uses: actions/upload-artifact@v1.0.0
       with:
         name: cc_ic2
-        path: build/libs/cc_ic2-1.0.jar
+        path: build/libs/*.jar
 
 # vim: set ts=2 sw=2 autoindent ff=unix :
+
