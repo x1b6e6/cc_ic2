@@ -6,6 +6,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      cc_ic2-version: 1.1
 
     steps:
     - uses: actions/checkout@v1
@@ -15,6 +17,7 @@ jobs:
         path: |
           ~/.gradle
           build
+
         key: ${{ runner.os }}-wrapper-and-build
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
@@ -27,7 +30,7 @@ jobs:
     - uses: actions/upload-artifact@v1.0.0
       with:
         name: cc_ic2
-        path: build/libs/*.jar
+        path: build/libs/cc_ic2-${{ env.cc_ic2-version }}.jar
 
 # vim: set ts=2 sw=2 autoindent ff=unix :
 
